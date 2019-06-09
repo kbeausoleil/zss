@@ -131,6 +131,11 @@ static int serveVSAMDatasetContents(HttpService *service, HttpResponse *response
   return 0;
 }
 
+static int serveDatasetCatalogInfo(HttpService *service, HttpResponse *response) {
+  // TODO: write me
+  return 0;
+}
+
 void installDatasetContentsService(HttpServer *server) {
   zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_INFO, "Installing dataset contents service\n");
   zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_DEBUG2, "begin %s\n", __FUNCTION__);
@@ -181,6 +186,10 @@ void installDatasetMetadataService(HttpServer *server) {
                   makeStringParamSpec("includeUnprintable", SERVICE_ARG_OPTIONAL,
                     makeIntParamSpec("workAreaSize", SERVICE_ARG_OPTIONAL, 0,0,0,0, NULL)))))))));
   registerHttpService(server, httpService);
+}
+
+void installDatasetCatalogInfo(HttpServer *server) {
+  // TODO: write me!
 }
 
 #endif /* __ZOWE_OS_ZOS */
