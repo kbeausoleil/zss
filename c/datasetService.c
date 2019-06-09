@@ -132,6 +132,7 @@ static int serveVSAMDatasetContents(HttpService *service, HttpResponse *response
 }
 
 static int serveDatasetCatalogInfo(HttpService *service, HttpResponse *response) {
+
   // TODO: write me
   return 0;
 }
@@ -189,7 +190,15 @@ void installDatasetMetadataService(HttpServer *server) {
 }
 
 void installDatasetCatalogInfo(HttpServer *server) {
-  // TODO: write me!
+  zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_INFO, "Installing dataset catalog info service\n");
+  zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_DEBUG2, "begin %s\n", __FUNCTION__);
+
+  HttpService *httpService = makeGeneratedService("datasetCatalogInfo", "/datasetCatalogInfo/**");
+  httpService->authType = SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN;
+  httpService->runInSubtask = TRUE;
+  httpService->doImpersonation = TRUE;
+  httpService->serviceFunction = serveDatasetCatalogInfo;
+  registerHttpService(server, httpService);
 }
 
 #endif /* __ZOWE_OS_ZOS */
