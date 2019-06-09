@@ -132,8 +132,18 @@ static int serveVSAMDatasetContents(HttpService *service, HttpResponse *response
 }
 
 static int serveDatasetCatalogInfo(HttpService *service, HttpResponse *response) {
+  zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_DEBUG2, "begin %s\n", __FUNCTION__);
+  HttpRequest *request = response->request;
 
-  // TODO: write me
+  if (!strcmp(request->method, methodGET)) {
+    char *dsn = stringListPrint(request->parsedFile, 1, 1, "/", 0);
+    zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_INFO, "Serving: %s\n", dsn);
+    fflush(stdout);
+    respondWithDatasetCatalogInfo(response, dsn);
+  }
+
+  zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_DEBUG2, "end %s\n", __FUNCTION__);
+  zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_INFO, "Returning from serveDatasetCatalogInfo\n");
   return 0;
 }
 
