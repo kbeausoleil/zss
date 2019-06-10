@@ -199,7 +199,7 @@ void installDatasetMetadataService(HttpServer *server) {
   registerHttpService(server, httpService);
 }
 
-void installDatasetCatalogInfo(HttpServer *server) {
+void installDatasetCatalogInfoService(HttpServer *server) {
   zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_INFO, "Installing dataset catalog info service\n");
   zowelog(NULL, LOG_COMP_ID_MVD_SERVER, ZOWE_LOG_DEBUG2, "begin %s\n", __FUNCTION__);
 

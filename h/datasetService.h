@@ -16,7 +16,7 @@
 void installDatasetContentsService(HttpServer *server);
 void installVSAMDatasetContentsService(HttpServer *server);
 void installDatasetMetadataService(HttpServer *server);
-void installDatasetCatalogInfo(HttpServer *server);
+void installDatasetCatalogInfoService(HttpServer *server);
 
 #endif /* __DATASET_SERVICE_H__ */
 
